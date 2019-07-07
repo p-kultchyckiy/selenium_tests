@@ -1,0 +1,32 @@
+import unittest
+from selenium import webdriver
+import time
+
+driver = webdriver.Chrome("/home/p_kultchyckiy/Завантаження/chrome_driver/chromedriver")
+driver.get("https://hobby.dn.ua")
+driver.find_element_by_link_text("Увійти").click()
+driver.find_element_by_id("login-email").send_keys("test.mail.user.5463@gmail.com")
+driver.find_element_by_id("login-password").send_keys("test23456")
+driver.find_element_by_xpath("//form[@id='login-nav']/div[4]").click()
+time.sleep(2)
+driver.find_element_by_xpath("//a[@id='header-user-menu']").click()
+time.sleep(2)
+driver.find_element_by_xpath("//ul[@id='reg-user-menu']/li[2]/a").click()
+time.sleep(2)
+driver.execute_script("window.scrollTo(0, 500)")
+driver.find_element_by_xpath("//input[@id='old-password']").send_keys("test23456")
+driver.find_element_by_xpath("//input[@id='new-password']").send_keys("test12345")
+driver.find_element_by_xpath("//div[@class='col-md-9']/div[4]/div/form/a").click()
+driver.execute_script("window.scrollTo(0, 500)")
+driver.find_element_by_link_text("Ваш кабінет").click()
+driver.find_element_by_xpath("//ul[@id='reg-user-menu']/li[6]/a").click()
+time.sleep(2)
+driver.switch_to.alert.accept()
+driver.find_element_by_link_text("Увійти").click()
+driver.find_element_by_id("login-email").send_keys("test.mail.user.5463@gmail.com")
+driver.find_element_by_id("login-password").send_keys("test12345")
+driver.find_element_by_xpath("//form[@id='login-nav']/div[4]").click()
+time.sleep(3)
+driver.close()
+
+unittest.main()
